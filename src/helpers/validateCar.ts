@@ -2,9 +2,9 @@ import { z } from 'zod';
 import CustomError from '../interfaces/IError';
 
 const validateBody = (
-  obj: any, 
-  schema: z.ZodObject<any>,
-  mainSchema: z.ZodObject<any>,
+  obj: unknown, 
+  schema: z.ZodObject<z.ZodRawShape>,
+  mainSchema: z.ZodObject<z.ZodRawShape>,
 ): void => {
   const zodSchemas = mainSchema.merge(schema);
   const parsedObj = zodSchemas.safeParse(obj);
